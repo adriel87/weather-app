@@ -1,15 +1,8 @@
-import { useState } from "react"
-import logo from "./logo.svg"
 import "./App.css"
+import ForecastCardComponent from "./components/ForecastCardComponent"
 
 function App() {
-	const [count, setCount] = useState(0)
-
-	return (
-		<div className='App'>
-			<p>hola manoli</p>
-		</div>
-	)
+	return <ForecastCardComponent />
 }
 
 export default App
