@@ -41,18 +41,18 @@ const FinderLocationComponent = () => {
 		getPosition()
 	}
 	return (
-		<div className='flex flex-row bg-green-200 py-2 w-screen items-center justify-evenly'>
+		<div className='flex flex-row my-2 py-2 w-screen items-center justify-evenly'>
 			<form>
 				<input
 					placeholder='Introduce una ciudad...'
 					value={location}
 					onChange={handlerLocation}
-					className='px-2 py-1 w-[18rem] ring-1 ring-sky-600 focus:ring-sky-300 rounded-lg shadow-inner shadow-md'
+					className='px-2 py-1 w-[18rem] ring-1 ring-sky-400 focus:ring-2 rounded-lg shadow-inner shadow-md'
 					id='location'
 				/>
 			</form>
-			<div className='py-2 px-3 bg-white rounded-full shadow-md' onClick={handlerLocation}>
-				<FontAwesomeIcon icon={faLocationCrosshairs} />
+			<div className='py-2 px-3 bg-white ring-1 ring-sky-400 rounded-full shadow-md' onClick={handlerLocation}>
+				<FontAwesomeIcon color='#2563EB' icon={faLocationCrosshairs} />
 			</div>
 		</div>
 	)
