@@ -1,8 +1,9 @@
 import "./App.css"
 import ForecastCardComponent from "./components/ForecastCardComponent"
+import Main from "./screen/Main"
 
 function App() {
-	return <ForecastCardComponent />
+	return <Main />
 }
 
 export default App
