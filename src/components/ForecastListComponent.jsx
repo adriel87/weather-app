@@ -5,12 +5,12 @@ import ForecastCardComponent from "./ForecastCardComponent"
 
 // const ejemplo = [
 //     {
-//         temperature: 24,
+//         day: 24,
 //         iconUrl: "the url or id we need to talk about it",
 //         degrees: 14.1,
 //     },
 //     {
-//         temperature: 24,
+//         day: 24,
 //         iconUrl: "the url or id we need to talk about it",
 //         degrees: 14.1,
 //     },

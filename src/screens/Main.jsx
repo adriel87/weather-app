@@ -4,7 +4,7 @@ import ForecastListComponent from "../components/ForecastListComponent"
 
 const Main = () => {
 	return (
-		<div className="h-full w-full">
+		<div className='h-screen w-screen bg-emerald-700'>
 			<FinderLocationComponent />
 			<DailyCardComponent />
 			<ForecastListComponent />

@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import debounce from 'lodash.debounce'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import debounce from 'lodash.debounce'
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
 
 const FinderLocationComponent = () => {
 	const [location, setLocation] = useState('')
@@ -39,18 +39,18 @@ const FinderLocationComponent = () => {
 	}
 	const debounceOnChange = debounce(handlerLocation, 1000)
 	return (
-		<div className='flex flex-row my-2 py-2 w-screen items-center justify-evenly'>
+		<div className='flex flex-row items-center w-screen pt-4 mb-2 justify-evenly'>
 			<form>
 				<input
 					type='search'
 					placeholder='Introduce una ciudad...'
 					value={location}
-					onChange={debounceOnChange}
-					className='px-2 py-1 w-[18rem] ring-1 ring-sky-400 focus:ring-2 rounded-lg shadow-inner shadow-md'
+					onChange={(e) => setLocation(e.target.value)}
+					className='px-2 py-1 w-[15.5rem] ring-1 ring-sky-400 focus:ring-2 rounded-lg shadow-md'
 					id='location'
 				/>
 			</form>
-			<div className='py-2 px-3 bg-white ring-1 ring-sky-400 focus:ring-sky-200 rounded-full shadow-md' onClick={handlerLocation}>
+			<div className='px-3 py-2 bg-white rounded-full shadow-md ring-1 ring-sky-400 focus:ring-sky-200' onClick={handlerLocation}>
 				<FontAwesomeIcon color='#2563EB' icon={faLocationCrosshairs} />
 			</div>
 		</div>
