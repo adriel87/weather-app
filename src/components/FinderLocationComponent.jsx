@@ -1,18 +1,17 @@
 import { useState } from 'react'
-import { library } from "@fortawesome/fontawesome-svg-core";
+import debounce from 'lodash.debounce'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
-// library.add(faLocationCrosshairs)
-
 const FinderLocationComponent = () => {
-	const [location, setLocation] = useState("")
+	const [location, setLocation] = useState('')
 	const reverseUrl = 'https://geocode.maps.co/reverse?'
 	const getAddress = (latitude, longitude) => {
 		fetch(`${reverseUrl}lat=${latitude}&lon=${longitude}`)
 			.then(response => response.json())
 			.then(data => {
-				setLocation(`${data.address.city}, ${data.address.country_code}`)
+				const address = `${data.address.city}, ${data.address.country_code}`
+				setLocation(address)
 			})
 			.catch(error => console.error(error))
 	}
@@ -33,25 +32,25 @@ const FinderLocationComponent = () => {
 	const error = (e) => {
 		console.error(`GeoError: ${e.message}`)
 	}
-
 	const handlerLocation = e => {
-		e.preventDefault()
 		// TODO: si la location está vacía, busqueda por GPS (getPosition) si no, busqueda por la dirección introducida, la cuestión es que hay que buscar por $location siempre.
-		location === '' ? getPosition() : alert("Please enter a location")
+		location === '' ? getPosition() : setLocation(e.target.value)
 		getPosition()
 	}
+	const debounceOnChange = debounce(handlerLocation, 1000)
 	return (
 		<div className='flex flex-row my-2 py-2 w-screen items-center justify-evenly'>
 			<form>
 				<input
+					type='search'
 					placeholder='Introduce una ciudad...'
 					value={location}
-					onChange={handlerLocation}
+					onChange={debounceOnChange}
 					className='px-2 py-1 w-[18rem] ring-1 ring-sky-400 focus:ring-2 rounded-lg shadow-inner shadow-md'
 					id='location'
 				/>
 			</form>
-			<div className='py-2 px-3 bg-white ring-1 ring-sky-400 rounded-full shadow-md' onClick={handlerLocation}>
+			<div className='py-2 px-3 bg-white ring-1 ring-sky-400 focus:ring-sky-200 rounded-full shadow-md' onClick={handlerLocation}>
 				<FontAwesomeIcon color='#2563EB' icon={faLocationCrosshairs} />
 			</div>
 		</div>
