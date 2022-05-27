@@ -29,7 +29,11 @@ const ForecastListComponent = (props) => {
       <section className="relative flex flex-no-wrap items-start gap-12 mx-8 overflow-x-scroll scrolling-touch min-w-fit scroll-smooth snap-x snap-proximity">
         {data.map((item, index) => {
           return (
-            <ForecastCardComponent day={item.day} degrees={item.degrees}>
+            <ForecastCardComponent
+              day={item.day}
+              degrees={item.degrees}
+              key={index}
+            >
               <WeatherIconComponent iconUrl={WeatherIcon} altText="cloudy" />
             </ForecastCardComponent>
           )
